@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data/agjudgeyear_full.csv","data/CCES16_Common_OUTPUT_Feb2018_VV.RData","data/dataverse_files 2/replicationCCES.R","data/dataverse_files 2/replicationLucid.r","data/dataverse_files 2/Schaffner_Barney_Lucid_Module-1.dta","data/dataverse_files 2/Schaffner_Barney_Lucid_Module.dta","data/dataverse_files.zip","data/dataverse_files/replicationCCES.R","data/dataverse_files/replicationLucid.r","data/dataverse_files/Schaffner_Barney_Lucid_Module-1.dta","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.30/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","Schaffner_Barney_Lucid_Module.dta"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1546,7 +1546,32 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-article">
 <h2 id="project-thoughts">Project thoughts</h2>
 <p>I am interested in exploring data related to swing state election trends, and how they change over time or related to voter’s most important issues. Additionally, I am curious how voter’s choices change after marriage or after having children. How do these monumental life choices impact their political ideology or how often they vote, if at all.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="data-set">Data Set</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span></span>
+<span><span class='va'>agjudgeyear_full</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"data/agjudgeyear_full.csv"</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>agjudgeyear_full</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code># A tibble: 6 × 15
+   ...1    nid first.name last.name eval.year court   pap gender asian
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1     1 4.26e6 A.         Quattleb…      2021 U.S.…     1      1     0
+2     2 4.26e6 A.         Quattleb…      2024 U.S.…     1      1     0
+3     3 1.39e6 Abner      Mikva          1990 U.S.…     0      1     0
+4     4 1.39e6 Abner      Mikva          1994 U.S.…     0      1     0
+5     5 1.39e6 Adalberto  Jordan         2015 U.S.…     0      1     0
+6     6 1.39e6 Adalberto  Jordan         2017 U.S.…     0      1     0
+# ℹ 6 more variables: black &lt;dbl&gt;, hispanic &lt;dbl&gt;, white &lt;dbl&gt;,
+#   judjis_score &lt;dbl&gt;, ci_l &lt;dbl&gt;, ci_u &lt;dbl&gt;</code></pre>
+</div>
+<h1 id="research-question">Research Question</h1>
+<p>My research question is have US Court of Appeals judges become more politically polarized over time? My hypothesis is that judges’ ideological scores have, on average, become more polarized over time, given political parties have trended in that direction. Since presidents appoint circuit court judges, who then must be confirmed by the Senate, they will likely choose a candidate in line with their own political ideology. Therefore, political extremism will follow through in presidents’ actions. My explanatory variable would be time, measured in years, and it would vary by whether they were appointed by a Republican or Democrat. This is useful to see which political party appoints more ideologically extreme judges. The outcome variable of interest is political ideology, measured in the Jurist-Derived Judicial Ideology Score. An observed pattern in the data that would provide support would be the absolute values of the JuDJIS scores increasing as the year increases, a positive relationship. An observed pater that would disprove my hypothesis would be the average JuDJIS scores not changing over time, or the absolute values decreasing with time.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
