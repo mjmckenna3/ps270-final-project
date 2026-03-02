@@ -12,3 +12,45 @@ output:
 ## Project thoughts
 
 I am interested in exploring data related to swing state election trends, and how they change over time or related to voter's most important issues. Additionally, I am curious how voter's choices change after marriage or after having children. How do these monumental life choices impact their political ideology or how often they vote, if at all.
+
+```{r setup}
+library(readr)
+library(tidyverse)
+library(dplyr)
+my_data <- read.dta("Schaffner_Barney_Lucid_Module.dta")
+```
+
+```{r}
+my_data2 <- load("CCES16_Common_OUTPUT_Feb2018_VV.RData")
+```
+
+```{r}
+my_data |>
+  filter(gender == 2)
+```
+
+
+```{r}
+head(my_data)
+```
+
+
+## My Research Question and Data
+
+My research question is how do election trends change given voters' percieved most important issues of a given election cycle? My hypothesis is that economic issues are the most significant driving factor in electoral changes, due to America's capitalist society and the notion that financial freedom is the ultimate "American Dream". People are conditioned to put their own interests first, therefore individual rights may fall to the background given issues like abortion do not directly impact all individuals (ex. those without a female reproductive system). My explanatory variables of interest are perceived importance political issues such as the economy and abortion, how one may rank the importance. My outcome variable is voting outcome of elections. This would be measured by who people in the study say they have voted for.
+
+
+## Temporary Submission
+
+```{r}
+library(readr)
+agjudgeyear_full <- read_csv("agjudgeyear_full.csv")
+```
+
+```{r}
+head(agjudgeyear_full)
+```
+
+# Research Question
+
+My research question is have US Court of Appeals judges become more politically polarized over time? My hypothesis is that judges' ideological scores have, on average, become more polarized over time, given political parties have trended in that direction. Since presidents appoint circuit court judges, who then must be confirmed by the Senate, they will likely choose a candidate in line with their own political ideology. Therefore, political extremism will follow through in presidents' actions. My explanatory variable would be time, measured in years, and it would vary by whether they were appointed by a Republican or Democrat. This is useful to see which political party appoints more ideologically extreme judges. The outcome variable of interest is political ideology, measured in the Jurist-Derived Judicial Ideology Score. An observed pattern in the data that would provide support would be the absolute values of the JuDJIS scores increasing as the year increases, a positive relationship. An observed pater that would disprove my hypothesis would be the average JuDJIS scores not changing over time, or the absolute values decreasing with time.
