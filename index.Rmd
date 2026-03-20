@@ -23,7 +23,7 @@ judges <- read_csv("data/agjudgeyear_full.csv")
 ```
 
 ```{r}
-head(agjudgeyear_full)
+head(judges)
 ```
 
 # Research Question
