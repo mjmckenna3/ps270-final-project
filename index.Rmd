@@ -46,10 +46,7 @@ judges <- judges |>
       asian == 1 ~ "Asian",
       black == 1 ~ "Black", 
       hispanic == 1 ~ "Hispanic", 
-      white == 1 ~ "White"
-      
-    )
-  )
+      white == 1 ~ "White"))
 
 ggplot(judges, mapping = aes(x = race, fill = race, color = race)) +
   geom_bar() +
