@@ -19,7 +19,7 @@ I am interested in exploring data related to swing state election trends, and ho
 
 ```{r}
 library(readr)
-agjudgeyear_full <- read_csv("data/agjudgeyear_full.csv")
+judges <- read_csv("data/agjudgeyear_full.csv")
 ```
 
 ```{r}
@@ -29,3 +29,31 @@ head(agjudgeyear_full)
 # Research Question
 
 My research question is have US Court of Appeals judges become more politically polarized over time? My hypothesis is that judges' ideological scores have, on average, become more polarized over time, given political parties have trended in that direction. Since presidents appoint circuit court judges, who then must be confirmed by the Senate, they will likely choose a candidate in line with their own political ideology. Therefore, political extremism will follow through in presidents' actions. My explanatory variable would be time, measured in years, and it would vary by whether they were appointed by a Republican or Democrat. This is useful to see which political party appoints more ideologically extreme judges. The outcome variable of interest is political ideology, measured in the Jurist-Derived Judicial Ideology Score. An observed pattern in the data that would provide support would be the absolute values of the JuDJIS scores increasing as the year increases, a positive relationship. An observed pater that would disprove my hypothesis would be the average JuDJIS scores not changing over time, or the absolute values decreasing with time.
+
+
+```{r}
+judges
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+judges <- judges |>
+  mutate(
+    race = case_when(
+      asian == 1 ~ "Asian",
+      black == 1 ~ "Black", 
+      hispanic == 1 ~ "Hispanic", 
+      white == 1 ~ "White"
+      
+    )
+  )
+
+ggplot(judges, mapping = aes(x = race, fill = race, color = race)) +
+  geom_bar() +
+  labs(x = "Race", y = "Number of Judges", title = "Distribution of Judges by Race", subtitle = "JuDJIS Data")
+
+
+```
+
