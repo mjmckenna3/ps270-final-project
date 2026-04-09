@@ -65,7 +65,9 @@ judges <- judges |>
 ggplot(data = judges, mapping = aes(x = eval.year, y = judjis_score, fill = ideology, color = ideology)) +
   geom_point()
 ```
+
 Trends are difficult to pick out in this graph. Rather, let's look at the data as differences in the average Judjis ideology scores for each party over time.
+
 ```{r}
 
 judges |>
